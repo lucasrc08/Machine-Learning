@@ -44,7 +44,7 @@ def clean_data(df, config):
     # Crear variable objetivo de clasificación
     threshold = config["viral_threshold"]
     df[config["target_classification"]] = (df[config["target_regression"]] >= threshold).astype(int)
-    print(f"🎯 Canciones virales (>= {threshold:,} streams): {df[config['target_classification']].sum()}")
+    print(f" Canciones virales (>= {threshold:,} streams): {df[config['target_classification']].sum()}")
     
     return df
 

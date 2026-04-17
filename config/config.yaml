@@ -2,9 +2,8 @@ data:
   raw_path: "data/raw/Datos_proyecto_C1_Spotify_Youtube.csv"
   processed_path: "data/processed/datos_limpios.csv"
 
-target_regression: "Stream"
 target_classification: "viral"
-viral_threshold: 500000000  # streams >= 500M = viral
+viral_threshold: 150000000  # streams >= 150M = viral
 
 features_numericas:
   - Danceability
@@ -18,9 +17,7 @@ features_numericas:
   - Valence
   - Tempo
   - Duration_ms
-  - Views
-  - Likes
-  - Comments
+ 
 
 features_categoricas:
   - Album_type

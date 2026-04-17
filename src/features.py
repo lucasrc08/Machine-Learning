@@ -35,11 +35,14 @@ def engineer_features(df):
     )
     return df
 
-def get_feature_matrix(df, config, use_log=True):
+def get_feature_matrix(df, config, use_log=False):
     feats = list(config["features_numericas"]) + list(config["features_categoricas"])
-    if use_log:
-        feats += ["engagement_rate", "log_Views", "log_Likes", "log_Comments"]
+    
+    # Solo columnas que existen
     feats = [f for f in feats if f in df.columns]
-    targets = [config["target_regression"], config["target_classification"], "log_Stream"]
+    
+    # Excluir targets
+    targets = [config["target_classification"], "log_Stream"]
     feats = [f for f in feats if f not in targets]
+    
     return df[feats]

@@ -26,25 +26,27 @@ def clean_data(df, config):
     # Eliminar duplicados
     n_before = len(df)
     df.drop_duplicates(subset=["Artist", "Track"], keep="first", inplace=True)
-    print(f" Duplicados eliminados: {n_before - len(df)}")
+    print(f"Duplicados eliminados: {n_before - len(df)}")
     
-    # Eliminar filas con target nulo
-    df.dropna(subset=[config["target_regression"]], inplace=True)
+    # Eliminar filas sin Stream (necesario para crear viral)
+    df.dropna(subset=["Stream"], inplace=True)
     
     # Imputar numéricos con mediana
     for col in config["features_numericas"]:
         if col in df.columns and df[col].isnull().any():
-            df[col].fillna(df[col].median(), inplace=True)
+            df[col] = df[col].fillna(df[col].median())
     
     # Imputar categóricos con moda
     for col in config["features_categoricas"]:
         if col in df.columns and df[col].isnull().any():
-            df[col].fillna(df[col].mode()[0], inplace=True)
+            df[col] = df[col].fillna(df[col].mode()[0])
     
-    # Crear variable objetivo de clasificación
+    # Crear variable objetivo
     threshold = config["viral_threshold"]
-    df[config["target_classification"]] = (df[config["target_regression"]] >= threshold).astype(int)
-    print(f" Canciones virales (>= {threshold:,} streams): {df[config['target_classification']].sum()}")
+    df[config["target_classification"]] = (df["Stream"] >= threshold).astype(int)
+    
+    print(f"Canciones virales (>= {threshold:,}): {df[config['target_classification']].sum()}")
+    print(df[config["target_classification"]].value_counts(normalize=True))
     
     return df
 

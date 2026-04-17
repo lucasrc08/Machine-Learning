@@ -1,5 +1,8 @@
 #  Predicción de Popularidad Musical: Spotify & YouTube
 
+Powerbi link dashboard junto con las metricas
+https://app.powerbi.com/view?r=eyJrIjoiOGQxNDUyMzgtYjgzMC00MmE5LTkxNWUtZDlkN2U5MWVjMjY2IiwidCI6ImFjYTUxNjMxLTAwZmUtNDkwZC05MWFiLTE2M2VmODcyNjBlZSIsImMiOjR9
+
 ## Descripción del Problema
 
 En la industria musical actual, los artistas y sellos discográficos necesitan anticipar qué canciones tendrán mayor éxito en plataformas de streaming y redes sociales. Este proyecto aplica técnicas de aprendizaje de máquina sobre un dataset combinado de Spotify y YouTube para **predecir el número de reproducciones (Streams) en Spotify** a partir de características acústicas y métricas de YouTube.

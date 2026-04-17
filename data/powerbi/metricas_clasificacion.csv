@@ -1,0 +1,5 @@
+Modelo;Accuracy;Precision;Recall;F1_Score
+DecisionTree;0,7149;0,3936;0,4088;0,401
+RandomForest;0,8009;0,8416;0,1814;0,2985
+LogisticRegression;0,7675;0,6667;0,0085;0,0169
+LightGBM;0,7966;1,0;0,1404;0,2455

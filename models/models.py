@@ -63,13 +63,16 @@ def evaluate_regression(models, X_test, y_test):
 def train_classification_models(X_train, y_train, random_state=42):
     models = {
         "LogisticRegression": LogisticRegression(
+            class_weight='balanced',
             max_iter=1000,
             random_state=random_state
         ),
         "DecisionTree": DecisionTreeClassifier(
+            class_weight='balanced',
             random_state=random_state
         ),
         "RandomForest": RandomForestClassifier(
+            class_weight='balanced',
             n_estimators=100,
             random_state=random_state,
             n_jobs=-1
